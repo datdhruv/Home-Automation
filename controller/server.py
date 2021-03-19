@@ -7,16 +7,9 @@ PORT = 5050
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
 
-# Check your ip address using ifconfig/ipconfig/ip addr
-# SERVER = "192.168.0.110"
-
-# To get based on dynamic hostname
-SERVER = socket.gethostbyname(socket.gethostname())
+SERVER = ''
 
 ADDR = (SERVER, PORT)
-
-# What kind of address are we going to look for in the connections
-# SOCK_Stream: Streaming data over the socket
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # binds the server to the port. first arguemnt of bind is a tuple
