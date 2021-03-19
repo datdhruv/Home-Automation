@@ -1,0 +1,2 @@
+python3 tensorflow1/models/research/object_detection/Object_detection_picamera.py
+
