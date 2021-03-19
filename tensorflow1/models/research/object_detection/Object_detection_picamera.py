@@ -13,7 +13,7 @@ import RPi.GPIO as gpio
 
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
-gpio.setup(21,gpio.OUT)
+gpio.setup(1,gpio.OUT)
 
 # Set up camera constants
 IM_WIDTH = 1280
@@ -147,9 +147,9 @@ if camera_type == 'picamera':
         print(x[0])
         
         if x[0] == 1:
-            gpio.output(21,gpio.HIGH)
+            gpio.output(1,gpio.HIGH)
             sleep(5)
-            gpio.output(21,gpio.LOW)
+            gpio.output(1,gpio.LOW)
 
             
       

@@ -1,5 +1,12 @@
 import socket
 import threading
+import RPi.GPIO as gpio
+
+gpio.setwarnings(False)
+gpio.setmode(gpio.BCM)
+gpio.setup(1,gpio.OUT)
+
+
 
 HEADER = 64
 # Choose a port
@@ -25,6 +32,12 @@ def handle_client(conn, addr):
             msg_length = int(msg_length)
 
             msg = conn.recv(msg_length).decode(FORMAT)
+            
+            if (msg == 'on'):
+                gpio.output(1, gpio.HIGH)
+
+            if (msg == 'off'):
+                gpio.output(1, gpio.LOW)
 
             if (msg == "!DISCONNECT"):
                 connected = False
@@ -49,3 +62,4 @@ def start():
         thread.start()
         #print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
 
+start()
