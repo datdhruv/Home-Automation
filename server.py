@@ -1,6 +1,6 @@
 import socket
 import threading
-from home_automation.functions import handler
+from functions import handler
 
 HEADER = 64
 # Choose a port

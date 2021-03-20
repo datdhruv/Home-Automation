@@ -1,19 +1,23 @@
 import RPi.GPIO as GPIO
 from time import sleep 
 
+gpio.setwarnings(False)
+gpio.setmode(gpio.BCM)
+gpio.setup(1,gpio.OUT)
+
+
 ## set LED default to ,ow in controller program
 
-def LED(a):
-    if (a == "on"):
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(1, GPIO.OUT, initial=GPIO.HIGH)
+def LED_control(msg):
+    if (msg == "LED ON"):
+        gpio.output(1, gpio.HIGH)
+        
+        # Debug message
+        print("LED turned on")
 
-
-    elif (a == "off"):
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(1, GPIO.OUT, initial=GPIO.LOW)
-
-    return (9)
-LED('on')
+    elif (msg == "LED OFF"):
+        gpio.output(1, gpio.LOW)
+        
+        # Debug message
+        print("Led turned off")
+    
