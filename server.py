@@ -8,7 +8,7 @@ from functions import handler
 
 
 # --- OpenCV Detection process ---
-subprocess.Popen([sys.executable,"./tensorflow1/models/research/object_detection/Object_detection_picamera.py"])
+subprocess.Popen([sys.executable,"./Object_detection_picamera.py"], cwd="./tensorflow1/models/research/object_detection")
 
 
 

@@ -13,7 +13,8 @@ import RPi.GPIO as gpio
 
 gpio.setwarnings(False)
 gpio.setmode(gpio.BCM)
-gpio.setup(1,gpio.OUT)
+gpio.setup(21,gpio.OUT)
+gpio.setup(14,gpio.OUT)
 
 # Set up camera constants
 IM_WIDTH = 1280
@@ -146,11 +147,22 @@ if camera_type == 'picamera':
         
         print(x[0])
         
-        if x[0] == 1:
-            gpio.output(1,gpio.HIGH)
+        #if x[0] == 1:
+        #    gpio.output(1,gpio.HIGH)
+        #    sleep(5)
+        #    gpio.output(1,gpio.LOW)
+        
+        if x[0] == 3:
+            gpio.output(21,gpio.HIGH)
+            p = gpio.PWM(14, 50) # GPIO 17 for PWM with 50Hz
+            p.start(2.5) # Initialization
+            p.ChangeDutyCycle(10)
+            time.sleep(5)
+            p.ChangeDutyCycle(5)
+            time.sleep(5)
+            p.stop()
             sleep(5)
-            gpio.output(1,gpio.LOW)
-
+            gpio.output(21,gpio.LOW)
             
       
         cv2.putText(frame,"FPS: {0:.2f}".format(frame_rate_calc),(30,50),font,1,(255,255,0),2,cv2.LINE_AA)
@@ -219,3 +231,4 @@ elif camera_type == 'usb':
     camera.release()
 
 cv2.destroyAllWindows()
+
