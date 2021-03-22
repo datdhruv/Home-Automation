@@ -1,10 +1,20 @@
 import socket
 import threading
+
+import subprocess
+import sys
+
 from functions import handler
+
+
+# --- OpenCV Detection process ---
+subprocess.Popen([sys.executable,"./tensorflow1/models/research/object_detection/Object_detection_picamera.py"])
+
+
 
 HEADER = 64
 # Choose a port
-PORT = 5051
+PORT = 5050
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
 
