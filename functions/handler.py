@@ -8,7 +8,7 @@ gpio.setup(14,gpio.OUT)
 
 def SERVO_control():
     gpio.output(14,gpio.HIGH)
-    p = gpio.PWM(14, 50) # GPIO 17 for PWM with 50Hz
+    p = gpio.PWM(14, 50) #PWM with 50Hz
     p.start(2.5) # Initialization
     p.ChangeDutyCycle(10)
     #time.sleep(5)
